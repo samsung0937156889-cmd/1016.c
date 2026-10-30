@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+int main()
+{
+    struct Node *head;
+    
+    // 1. 修正 malloc 大小為 struct Node
+    head = malloc(sizeof(struct Node));
+    if (head == NULL)
+    {
+        printf("無效");
+        return 1;
+    }
+    
+    // 2. 正確對 data 賦值，next 先設為 NULL
+    head->data = 10;
+    head->next = NULL;
+
+    printf("%d", head->data);
+    
+    free(head);
+    return 0;
+}
